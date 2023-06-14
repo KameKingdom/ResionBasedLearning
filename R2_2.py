@@ -18,4 +18,3 @@ with open(file_name) as file:
                 min_price = price
 
 print(f"ジャケットの数{jacket_num}\n最高価格{max_price}\n最低価格{min_price}")        
-
