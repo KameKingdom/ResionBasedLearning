@@ -11,6 +11,7 @@ with zipfile.ZipFile('sample.zip', 'r') as zip_file:
                     contents = file.read()
                     print(contents)
                     number = int(contents.strip())
+                    print(number)
                     total_sum += number
 
     # 合計を出力する
