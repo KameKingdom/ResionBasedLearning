@@ -35,11 +35,12 @@ def animate(zip_file):
             with zip_file.open(file_name, 'r') as file:
                 data = json.load(file)
                 if isinstance(data, dict):
+                    print(data)
                     canvas.delete("all")
                     draw_lines(data)
                     
             index += 1
-            root.after(500, update_animation)  # 1秒後に再度呼び出す
+            root.after(500, update_animation)
         
     update_animation()
 
