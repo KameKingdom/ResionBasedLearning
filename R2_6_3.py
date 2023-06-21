@@ -9,27 +9,40 @@ root.title("北村研領域実習R2_6_2")
 canvas = tk.Canvas(root)
 canvas.pack(fill=tk.BOTH, expand=True)
 
+
 def location(pos, data, i):
     content = data["people"][i]["pose_keypoints_2d"]
     return int(content[3 * pos + 0]), int(content[3 * pos + 1])
 
+
+lines = [
+    (0, 1),
+    (1, 2),
+    (2, 3),
+    (3, 4),
+    (1, 5),
+    (5, 6),
+    (6, 7),
+    (1, 8),
+    (8, 9),
+    (9, 10),
+    (10, 11),
+    (11, 22),
+    (8, 12),
+    (12, 13),
+    (13, 14),
+    (14, 19),
+]
+
+
 def draw_lines(data):
     people_num = len(data["people"])
     for i in range(people_num):
-        canvas.create_line(location(0, data, i), location(1, data, i), width=2)
-        canvas.create_line(location(1, data, i), location(2, data, i), width=2)
-        canvas.create_line(location(2, data, i), location(3, data, i), width=2)
-        canvas.create_line(location(3, data, i), location(4, data, i), width=2)
-        canvas.create_line(location(1, data, i), location(5, data, i), width=2)
-        canvas.create_line(location(5, data, i), location(6, data, i), width=2)
-        canvas.create_line(location(6, data, i), location(7, data, i), width=2)
-        canvas.create_line(location(1, data, i), location(8, data, i), width=2)
-        canvas.create_line(location(8, data, i), location(9, data, i), width=2)
-        canvas.create_line(location(9, data, i), location(10, data, i), width=2)
-        canvas.create_line(location(10, data, i), location(11, data, i), width=2)
-        canvas.create_line(location(8, data, i), location(12, data, i), width=2)
-        canvas.create_line(location(12, data, i), location(13, data, i), width=2)
-        canvas.create_line(location(13, data, i), location(14, data, i), width=2)
+        for line in lines:
+            start = location(line[0], data, i)
+            end = location(line[1], data, i)
+            if start != (0, 0) and end != (0, 0):
+                canvas.create_line(start, end, width=2)
 
 def animate(zip_file):
     file_names = zip_file.namelist()
@@ -41,7 +54,7 @@ def animate(zip_file):
         if index < len(file_names):
             file_name = file_names[index]
 
-            with zip_file.open(file_name, 'r') as file:
+            with zip_file.open(file_name, "r") as file:
                 data = json.load(file)
                 if isinstance(data, dict):
                     print(data)
@@ -55,7 +68,8 @@ def animate(zip_file):
 
     update_animation()
 
-zip_file = zipfile.ZipFile("kabeposter.zip", 'r')
+
+zip_file = zipfile.ZipFile("kabeposter.zip", "r")
 animate(zip_file)
 
 root.mainloop()
