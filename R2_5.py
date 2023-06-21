@@ -2,7 +2,7 @@ import tkinter as tk
 
 root = tk.Tk()
 root.geometry("500x500+0+0")
-root.title("北村研領域実習R2_4")
+root.title("北村研領域実習R2_5")
 
 canvas = tk.Canvas(root)
 canvas.pack(fill=tk.BOTH, expand=True)
