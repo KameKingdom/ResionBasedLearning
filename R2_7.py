@@ -96,7 +96,8 @@ with zipfile.ZipFile(path, 'r') as zip_file:
                 line = line.split(' ')
                 if line[0]:
                     numbers.append(line[0])
-            for i in numbers:
-                objects.append(yolo_dict[int(i)])
+
+for i in numbers:
+    objects.append(yolo_dict[int(i)])
 
 print(f"detect: {set(objects)}")
