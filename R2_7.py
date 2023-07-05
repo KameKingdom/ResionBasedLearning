@@ -98,6 +98,5 @@ with zipfile.ZipFile(path, 'r') as zip_file:
                     numbers.append(line[0])
             for i in numbers:
                 objects.append(yolo_dict[int(i)])
-            print(numbers)
 
 print(f"detect: {set(objects)}")
