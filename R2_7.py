@@ -83,7 +83,7 @@ yolo_dict = {
 
 import zipfile
 
-path = "C:/Users/yudai/Desktop/KGU/3年生春学期/領域実習/ResionBasedLearning1/ResionBasedLearning1/labels.zip"
+path = "labels.zip"
 objects = []
 numbers = []
 
